@@ -18,18 +18,22 @@ SDL_Window* displayWindow;
 bool gameIsRunning = true;
 
 ShaderProgram program;
-glm::mat4 viewMatrix, sonicMatrix, coin1Matrix, coin2Matrix, coin3Matrix,projectionMatrix;
+glm::mat4 viewMatrix, sonicMatrix, coin1Matrix, coin2Matrix, coin3Matrix, backgroundMatrix, projectionMatrix;
 
 float sonic_x = 0;
 float sonic_rotate = 0;
 
-float coin_y13 = 1.0;
-float coin_y2 = 0.0;
+float coin_ub = -0.7f;
+float coin_lb = -1.4f;
+
+float coin_y13 = coin_ub - 0.5f;
+float coin_y2 = coin_lb + 0.5f;
 
 GLuint sonicTextureID;
 GLuint coin1TextureID;
 GLuint coin2TextureID;
 GLuint coin3TextureID;
+GLuint backgroundTextureID;
 
 GLuint LoadTexture(const char* filePath) {
     int w, h, n;
@@ -76,6 +80,7 @@ void Initialize() {
     coin1Matrix = glm::mat4(1.0f);
     coin2Matrix = glm::mat4(1.0f);
     coin3Matrix = glm::mat4(1.0f);
+    backgroundMatrix = glm::mat4(1.0f);
     // what part of world we see
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
     
@@ -93,10 +98,10 @@ void Initialize() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
      
     sonicTextureID = LoadTexture("sonic_running.png");
-    coin1TextureID = LoadTexture("sonic_gold_ring2.png");
-    coin2TextureID = LoadTexture("sonic_gold_ring2.png");
-    coin3TextureID = LoadTexture("sonic_gold_ring2.png");
-    
+    coin1TextureID = LoadTexture("sonic_gold_ring.png");
+    coin2TextureID = LoadTexture("sonic_gold_ring.png");
+    coin3TextureID = LoadTexture("sonic_gold_ring.png");
+    backgroundTextureID = LoadTexture("sonic-background.png");
 }
 
 void ProcessInput() {
@@ -109,21 +114,7 @@ void ProcessInput() {
 }
 
 bool goingUp13 = true;  // notes direction of coin 1 and 3
-bool goingUp2 = true;  // notes direction of coin 2
-
-/*
-// moves given coin matrix up and down
-void coinMove(bool &direction, glm::mat4 coinMatrix) {
-    if (coin_y13 > 1.0f) { // if too high out of height range, change direction to down
-        direction = false;
-    } else if (coin_y13 < 0.0f)  { // if too low out of height range, change direction to up
-        direction = true;
-    } else { // if within height range
-        coinMatrix = glm::translate(coinMatrix, glm::vec3(0.0f, coin_y13, 0.0f));
-    }
-}
- */
-
+bool goingUp2 = false;  // notes direction of coin 2
 float lastTicks = 0.0f;
 void Update() {
     // every frame lets update position/scale - we will try to ignore z-values or at least not regard them as much
@@ -135,11 +126,12 @@ void Update() {
     float deltaTime = ticks - lastTicks;
     lastTicks = ticks;
     
-    // initializing info and positions
+    // initializing info and positions for sonic
     sonic_x += 1.0f * deltaTime; // move one unit per sec
     sonic_rotate += -360.0f * deltaTime; // rotate 90 degrees per sec
     sonicMatrix = glm::mat4(1.0f); // initialize identity matrix for sonic
-    sonicMatrix = glm::translate(sonicMatrix, glm::vec3(-4.0f, 0.0f, 0.0f)); // initialize original position
+    sonicMatrix = glm::translate(sonicMatrix, glm::vec3(-4.0f, -1.0f, 0.0f)); // initialize original position
+    sonicMatrix = glm::scale(sonicMatrix, glm::vec3(1.2f, 1.2f, 1.2f));
     
     // handling directions for coin 1 and 3 (should be matching)
     if (goingUp13) {
@@ -155,7 +147,7 @@ void Update() {
         coin_y2 -= 0.5f * deltaTime; // move one unit per sec
     }
     
-    // initailizing identity matrixes for coins to start at certain heights
+    // initailizing identity matrixes for coins to start at certain positions
     coin1Matrix = glm::mat4(1.0f); // initialize identity matrix for coin
     coin1Matrix = glm::translate(coin1Matrix, glm::vec3(-1.0f, coin_y13, 0.0f)); // initialize original position
 
@@ -165,21 +157,31 @@ void Update() {
     coin3Matrix = glm::mat4(1.0f); // initialize identity matrix for coin
     coin3Matrix = glm::translate(coin3Matrix, glm::vec3(3.0f, coin_y13, 0.0f)); // initialize original position
   
-    // transformations
-    if (sonic_x < 8.0f) {
-        sonicMatrix = glm::translate(sonicMatrix, glm::vec3(sonic_x, 0.0f, 0.0f));
+    // resizing coins
+    coin1Matrix = glm::scale(coin1Matrix, glm::vec3(0.8f, 0.8f, 0.8f));
+    coin2Matrix = glm::scale(coin2Matrix, glm::vec3(0.8f, 0.8f, 0.8f));
+    coin3Matrix = glm::scale(coin3Matrix, glm::vec3(0.8f, 0.8f, 0.8f));
+
+    // initializing identity matrix for background
+    backgroundMatrix = glm::mat4(1.0f);
+    backgroundMatrix = glm::translate(backgroundMatrix, glm::vec3(0.0f, 0.0f, 0.0f)); // initialize original position
+    backgroundMatrix = glm::scale(backgroundMatrix, glm::vec3(7.5f, 7.5f, 0.0f));
+
+    // handling transformations for sonic
+    if (sonic_x < 6.5f) { // sonic rolls across screen
+        sonicMatrix = glm::translate(sonicMatrix, glm::vec3(sonic_x, -1.0f, 0.0f));
         sonicMatrix = glm::rotate(sonicMatrix, glm::radians(sonic_rotate), glm::vec3(0.0f, 0.0f, 1.0f));
-    } else { // if it reaches end of screen then sonic restarts
+    } else { // if it reaches end of background then sonic restarts
         sonic_x = 0.0f;
-        sonicMatrix = glm::translate(sonicMatrix, glm::vec3(sonic_x, 0.0f, 0.0f));
+        sonicMatrix = glm::translate(sonicMatrix, glm::vec3(sonic_x, -1.0f, 0.0f));
     }
-    
+
     // handling transformations for coin 1 and 3 (should be matching)
-    if (coin_y13 >= 1.0f) { // if too high out of height range, change direction to down
+    if (coin_y13 >= -0.7f) { // if too high out of height range, change direction to down
         goingUp13 = false;
         coin1Matrix = glm::translate(coin1Matrix, glm::vec3(0.0f, coin_y13 - 0.01f, 0.0f));
         coin3Matrix = glm::translate(coin3Matrix, glm::vec3(0.0f, coin_y13 - 0.01f, 0.0f));
-    } else if (coin_y13 <= -0.1f)  { // if too low out of height range, change direction to up
+    } else if (coin_y13 <= -1.4f)  { // if too low out of height range, change direction to up
         goingUp13 = true;
         coin1Matrix = glm::translate(coin1Matrix, glm::vec3(0.0f, coin_y13 + 0.01f, 0.0f));
         coin3Matrix = glm::translate(coin3Matrix, glm::vec3(0.0f, coin_y13 + 0.01f, 0.0f));
@@ -189,15 +191,16 @@ void Update() {
     }
      
     // handling transformations for coin 2
-    if (coin_y2 >= 1.0f) { // if too high out of height range, change direction to down
+    if (coin_y2 >= -0.7f) { // if too high out of height range, change direction to down
         goingUp2 = false;
         coin2Matrix = glm::translate(coin2Matrix, glm::vec3(0.0f, coin_y2 - 0.01f, 0.0f));
-    } else if (coin_y2 <= -0.1f)  { // if too low out of height range, change direction to up
+    } else if (coin_y2 <= -1.4f)  { // if too low out of height range, change direction to up
         goingUp2 = true;
         coin2Matrix = glm::translate(coin2Matrix, glm::vec3(0.0f, coin_y2 + 0.01f, 0.0f));
     } else { // if within height range
         coin2Matrix = glm::translate(coin2Matrix, glm::vec3(0.0f, coin_y2, 0.0f));
     }
+    
 }
 
 
@@ -213,6 +216,11 @@ void Render() {
    glEnableVertexAttribArray(program.positionAttribute);
    glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
    glEnableVertexAttribArray(program.texCoordAttribute);
+    
+    program.SetModelMatrix(backgroundMatrix);
+    glBindTexture(GL_TEXTURE_2D, backgroundTextureID);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    
     
    program.SetModelMatrix(sonicMatrix);
    glBindTexture(GL_TEXTURE_2D, sonicTextureID);
