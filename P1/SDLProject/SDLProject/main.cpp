@@ -35,9 +35,10 @@ GLuint coin2TextureID;
 GLuint coin3TextureID;
 GLuint backgroundTextureID;
 
+// loads texture onto video card
 GLuint LoadTexture(const char* filePath) {
     int w, h, n;
-    // loads image into RAMRAM
+    // loads image into RAM
     unsigned char* image = stbi_load(filePath, &w, &h, &n, STBI_rgb_alpha);
     if (image == NULL) {
         std::cout << "Unable to load image. Make sure the path is correct\n";
@@ -86,7 +87,6 @@ void Initialize() {
     
     program.SetProjectionMatrix(projectionMatrix);
     program.SetViewMatrix(viewMatrix);
-   //  program.SetColor(1.0f, 1.0f, 0.0f, 1.0f); // set color to red
     
     // use the shader program mentioned
     glUseProgram(program.programID);
