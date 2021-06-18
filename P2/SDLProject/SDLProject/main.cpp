@@ -11,11 +11,39 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "ShaderProgram.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 SDL_Window* displayWindow;
 bool gameIsRunning = true;
 
 ShaderProgram program;
 glm::mat4 viewMatrix, paddleLeftMatrix, paddleRightMatrix, ballMatrix, projectionMatrix;
+
+
+GLuint LoadTexture(const char* filePath) {
+    int w, h, n;
+    // loads image into RAM
+    unsigned char* image = stbi_load(filePath, &w, &h, &n, STBI_rgb_alpha);
+    if (image == NULL) {
+        std::cout << "Unable to load image. Make sure the path is correct\n";
+        assert(false);
+}
+    /* creates and bind texture ID so rest of commands are about the same texture then puts raw image data (image) onto video card with ID texture number we created
+     */
+    GLuint textureID;
+    glGenTextures(1, &textureID); // creates texture ID
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    // sending image data to graphics card
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+    // uses nearest neighbor filter (pixel-like)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    
+    // free up space image took up in main memory since a copy of image is now in video card memory
+    stbi_image_free(image);
+    return textureID;
+}
 
 // intialize player positions
 glm::vec3 player_left_position = glm::vec3(-4.8f, 0.0f, 0.0f);
@@ -30,7 +58,7 @@ glm::vec3 ball_movement = glm::vec3(1.0f, 1.0f, 0.0f);
 float ball_x = 0;
 float ball_y = 0;
 
-float player_speed = 2.0f;
+float player_speed = 0.0f;
 
 void Initialize() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -52,6 +80,7 @@ void Initialize() {
     ballMatrix = glm::mat4(1.0f);
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
     
+    
     program.SetProjectionMatrix(projectionMatrix);
     program.SetViewMatrix(viewMatrix);
     program.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -59,6 +88,10 @@ void Initialize() {
     glUseProgram(program.programID);
     
     glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+    
+    glEnable(GL_BLEND);
+    // Good setting for transparency
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void ProcessInput() {
@@ -74,21 +107,14 @@ void ProcessInput() {
            case SDL_WINDOWEVENT_CLOSE:
                 gameIsRunning = false;
                 break;
-               /* TO DELETE
            case SDL_KEYDOWN:
                switch (event.key.keysym.sym) {
-                   case SDLK_LEFT:
-                       // Move the player left
-                       break;
-                   case SDLK_RIGHT:
-                       // Move the player right
-                       break;
                    case SDLK_SPACE:
-                       // Some sort of action
+                       player_speed = 2.0f;
                        break;
                }
                break; // SDL_KEYDOWN
-                */
+               
        }
    }
     // not an event -> just seeing value of pointer
@@ -151,6 +177,7 @@ void Update() {
     float deltaTime = ticks - lastTicks;
     lastTicks = ticks;
     
+    
     // Add (direction * units per second * elapsed time)
     player_left_position += player_left_movement * player_speed * deltaTime;
     player_right_position += player_right_movement * player_speed * deltaTime;
@@ -187,6 +214,7 @@ void Update() {
 void Render() {
     glClear(GL_COLOR_BUFFER_BIT);
     
+    // set up paddles and ball
     program.SetModelMatrix(paddleLeftMatrix);
     float paddle_Left_Vertices[] = {0.2f, -0.75f, 0.2f, 0.75f, -0.2f, -0.75f, -0.2f, 0.75f};
     glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, paddle_Left_Vertices);
@@ -202,7 +230,10 @@ void Render() {
     float ball_Vertices[] = {0.2f, -0.2f, 0.2f, 0.2f, -0.2f, -0.2f, -0.2f, 0.2f};
     glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, ball_Vertices);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
+
     glDisableVertexAttribArray(program.positionAttribute);
+    
     SDL_GL_SwapWindow(displayWindow);
 }
 
