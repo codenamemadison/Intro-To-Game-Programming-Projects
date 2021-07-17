@@ -11,7 +11,7 @@
 		7A96414026A109F500B7CE91 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A96413D26A109F100B7CE91 /* SDL2_image.framework */; };
 		7A96414126A109F500B7CE91 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A96413E26A109F300B7CE91 /* SDL2_mixer.framework */; };
 		7A96414226A109F500B7CE91 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A96413F26A109F500B7CE91 /* SDL2.framework */; };
-		7A96414B26A252A500B7CE91 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A96414A26A2529F00B7CE91 /* Assets */; };
+		7A96414D26A2579300B7CE91 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A96414C26A2578C00B7CE91 /* Assets */; };
 		DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B522323DE3F007CECB1 /* main.cpp */; };
 		DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */; };
 		DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBDF1B5C2323DE8D007CECB1 /* shaders */; };
@@ -27,7 +27,7 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
-				7A96414B26A252A500B7CE91 /* Assets in CopyFiles */,
+				7A96414D26A2579300B7CE91 /* Assets in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +39,7 @@
 		7A96413D26A109F100B7CE91 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
 		7A96413E26A109F300B7CE91 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_mixer.framework; sourceTree = "<group>"; };
 		7A96413F26A109F500B7CE91 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
-		7A96414A26A2529F00B7CE91 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../../../../Desktop/Assets; sourceTree = "<group>"; };
+		7A96414C26A2578C00B7CE91 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../../../../Desktop/Assets; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* SDLProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B522323DE3F007CECB1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
-				7A96414A26A2529F00B7CE91 /* Assets */,
+				7A96414C26A2578C00B7CE91 /* Assets */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
 				DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */,
