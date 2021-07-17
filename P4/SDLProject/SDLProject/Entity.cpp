@@ -283,7 +283,7 @@ void Entity::Render(ShaderProgram *program) {
     
     glBindTexture(GL_TEXTURE_2D, textureID);
     
-    glVertexAttribPointer(program->positionAttribute, 2, GL_FLOAT, false, 0, vertices); 
+    glVertexAttribPointer(program->positionAttribute, 2, GL_FLOAT, false, 0, vertices);
     glEnableVertexAttribArray(program->positionAttribute);
     
     glVertexAttribPointer(program->texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
@@ -294,6 +294,7 @@ void Entity::Render(ShaderProgram *program) {
     glDisableVertexAttribArray(program->positionAttribute);
     glDisableVertexAttribArray(program->texCoordAttribute);
 }
+
 
 
 
