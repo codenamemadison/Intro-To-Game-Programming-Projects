@@ -72,7 +72,7 @@ void Level2::Initialize() {
     state.enemies[0].height = 1.0f;
     state.enemies[0].width = 1.0f;
     
-    state.enemies[0].position = glm::vec3(7.0f, -1.0f, 0);
+    state.enemies[0].position = glm::vec3(7.0f, -3.0f, 0);
     state.enemies[0].speed = 1;
     state.enemies[0].aiType = PATROLER;
     state.enemies[0].direction = "right";

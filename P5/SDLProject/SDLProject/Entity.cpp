@@ -187,7 +187,7 @@ void Entity::AIWaitAndGo(Entity *player) {
             /* checking if player gets "too close" and if so the
                AI will switch states ("wakes up") and start walking
                toward the player */
-            if (glm::distance(position, player->position) < 2.0f) {
+            if (glm::distance(position, player->position) < 2.5f) {
                 aiState = MOVING;
             }
             break;
