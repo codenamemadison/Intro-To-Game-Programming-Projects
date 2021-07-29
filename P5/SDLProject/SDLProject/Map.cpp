@@ -107,21 +107,6 @@ bool Map::IsSolid(glm::vec3 position, float *penetration_x, float *penetration_y
         return true;
      }
 
-    /*
-    std::vector<int> solids = {0, 2, 3, 4, 23, 46, 69, 92, 115};
-    for (int i = 0; i < solids.size(); i++) {
-        if (tile == solids[i]) {
-            float tile_center_x = (tile_x * tile_size);
-            float tile_center_y = -(tile_y * tile_size);
-               
-            *penetration_x = (tile_size / 2) - fabs(position.x - tile_center_x);
-            *penetration_y = (tile_size / 2) - fabs(position.y - tile_center_y);
-               
-            return true;
-         }
-    }
-     
-     */
     return false;
 }
 

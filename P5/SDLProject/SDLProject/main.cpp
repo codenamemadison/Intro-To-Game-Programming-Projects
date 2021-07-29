@@ -64,9 +64,9 @@ void Initialize() {
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     music = Mix_LoadMUS("Assets/Sounds/music.mp3");
     Mix_PlayMusic(music, -1); // -1 = endless loop
-    Mix_VolumeMusic(MIX_MAX_VOLUME / 8);
+    Mix_VolumeMusic(MIX_MAX_VOLUME / 4);
 
-    jump = Mix_LoadWAV("Assests/Sounds/jump_sound_effect.wav");
+    jump = Mix_LoadWAV("Assets/Sounds/jump_sound_effect.wav");
     
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
@@ -122,7 +122,7 @@ void ProcessInput() {
                         if (currentScene != sceneList[0] && currentScene != sceneList[4] && currentScene != sceneList[5]) {
                             if(currentScene->state.player->collidedBottom) {
                                 Mix_PlayChannel(-1, jump, 0);
-                                //Mix_VolumeMusic(MIX_MAX_VOLUME/4);
+                                //Mix_VolumeMusic(MIX_MAX_VOLUME/32);
                                 currentScene->state.player->jump = true;
                                 
                             }

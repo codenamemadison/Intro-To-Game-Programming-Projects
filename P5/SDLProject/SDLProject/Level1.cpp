@@ -59,7 +59,7 @@ void Level1::Initialize() {
     
     state.enemies[0].animRight = new int[4] {0,1,2,3};
     state.enemies[0].animLeft = new int[4] {4,5,6,7};
-    state.enemies[0].animIndices = state.enemies[1].animLeft;
+    state.enemies[0].animIndices = state.enemies[0].animLeft;
     state.enemies[0].animFrames = 4;
     state.enemies[0].animIndex = 0;
     state.enemies[0].animTime = 0;
