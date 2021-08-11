@@ -15,9 +15,9 @@
 		7A54C69826B129DE00CE987A /* Level2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A54C69626B129DE00CE987A /* Level2.cpp */; };
 		7A54C69B26B12A0E00CE987A /* Level3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A54C69926B12A0E00CE987A /* Level3.cpp */; };
 		7A54C6AA26B1E62700CE987A /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A54C6A826B1E62700CE987A /* MainMenu.cpp */; };
+		7A953B8826C1116300B1F801 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A953B8726C1115900B1F801 /* Assets */; };
 		7AA0C8F526B22D9E001975A2 /* WinScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0C8F326B22D9E001975A2 /* WinScene.cpp */; };
 		7AA0C8F826B22DA8001975A2 /* LoseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0C8F626B22DA8001975A2 /* LoseScene.cpp */; };
-		7AA0C8FC26B25C9C001975A2 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AA0C8FB26B25C99001975A2 /* Assets */; };
 		DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B522323DE3F007CECB1 /* main.cpp */; };
 		DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */; };
 		DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBDF1B5C2323DE8D007CECB1 /* shaders */; };
@@ -36,7 +36,7 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
-				7AA0C8FC26B25C9C001975A2 /* Assets in CopyFiles */,
+				7A953B8826C1116300B1F801 /* Assets in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,11 +59,11 @@
 		7A54C69A26B12A0E00CE987A /* Level3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level3.h; sourceTree = "<group>"; };
 		7A54C6A826B1E62700CE987A /* MainMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		7A54C6A926B1E62700CE987A /* MainMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
+		7A953B8726C1115900B1F801 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = "../../../../../Desktop/[CS-UY 3113] Intro to Game Programming/Project 5 - materials/Assets"; sourceTree = "<group>"; };
 		7AA0C8F326B22D9E001975A2 /* WinScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WinScene.cpp; sourceTree = "<group>"; };
 		7AA0C8F426B22D9E001975A2 /* WinScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinScene.h; sourceTree = "<group>"; };
 		7AA0C8F626B22DA8001975A2 /* LoseScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoseScene.cpp; sourceTree = "<group>"; };
 		7AA0C8F726B22DA8001975A2 /* LoseScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoseScene.h; sourceTree = "<group>"; };
-		7AA0C8FB26B25C99001975A2 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../../../../Desktop/Assets; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* SDLProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B522323DE3F007CECB1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
-				7AA0C8FB26B25C99001975A2 /* Assets */,
+				7A953B8726C1115900B1F801 /* Assets */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
 				DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */,
