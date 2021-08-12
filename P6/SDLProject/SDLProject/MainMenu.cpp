@@ -5,14 +5,14 @@
 
 unsigned int MainMenu_data[] =
 {
-     0,  1,  8,  2,  8,  4, 70,  4, 56,  4,
-    11, 12, 55,  7, 13,  4,  4,  4,  4,  4,
-    22, 20, 29, 18, 17,  4,  4, 70,  4,  4,
-    22, 30,  5, 40, 48, 70,  4,  4, 56, 70,
-    22, 31, 47, 49, 59,  4, 56, 70,  4,  4,
-    22, 30, 39, 48, 70,  4,  4,  4, 56, 70,
-     4, 63, 58, 59,  4, 56,  4,  4, 71,  4,
-     4,  4,  4, 70,  4,  4,  4, 56, 70,  4
+     8,  1,  8, 15,  4,  4,  4,  4, 56,  4,
+     6, 55,  7, 26,  4,  4,  4,  4,  4,  4,
+    17, 29, 18, 51,  4,  4,  4, 70,  4,  4,
+     5, 40,  5, 48,  4,  4,  4,  4, 56, 70,
+    24,  5, 47, 48,  4,  4, 56, 70,  4,  4,
+     5,  5, 39, 48, 70,  4,  4,  4, 56, 70,
+    58, 58, 60, 59,  4, 56,  4,  4,  4,  4,
+    56,  4, 56, 70,  4,  4,  4, 56, 70,  4
 };
 
 void MainMenu::Initialize() {
@@ -25,21 +25,21 @@ void MainMenu::Update(float deltaTime, int &lives) {
     
 }
 void MainMenu::Render(ShaderProgram *program, GLuint fontTextureID) {
-    int centerline_x = 5.5;
+    int centerline_x = 5.0;
     int centerline_y = -4;
     state.map->Render(program);
     Util::DrawText(program, fontTextureID, "Stuck in",
-             0.6f, 0, glm::vec3(centerline_x + -1.0, centerline_y + 2.0, 0));
+             0.58f, -0.1, glm::vec3(centerline_x - 0.45, centerline_y + 2.0, 0));
     Util::DrawText(program, fontTextureID, "the Sewers",
-             0.6f, 0, glm::vec3(centerline_x + -1.7, centerline_y + 1.25, 0));
+             0.58f, 0, glm::vec3(centerline_x - 1.3, centerline_y + 1.2, 0));
     Util::DrawText(program, fontTextureID, "Developed by",
-             0.25f, 0, glm::vec3(centerline_x + -0.25f, centerline_y + 0.5, 0));
+             0.25f, 0, glm::vec3(centerline_x + -0.2f, centerline_y + 0.5, 0));
     Util::DrawText(program, fontTextureID, "Madison Shimbo",
-             0.25f, 0, glm::vec3(centerline_x + -0.5f, centerline_y + 0.1, 0));
+             0.25f, 0, glm::vec3(centerline_x + -0.45f, centerline_y + 0.1, 0));
     Util::DrawText(program, fontTextureID, "Press Enter",
-             0.3f, 0, glm::vec3(centerline_x + -0.65f, centerline_y + -1.8, 0));
+             0.3f, 0, glm::vec3(centerline_x + -0.35f, centerline_y + -1.1, 0));
     Util::DrawText(program, fontTextureID, "To Continue",
-             0.3f, 0, glm::vec3(centerline_x + -0.65f, centerline_y + -2.3, 0));
+             0.3f, 0, glm::vec3(centerline_x + -0.35f, centerline_y + -1.6, 0));
 }
 
 

@@ -5,7 +5,6 @@ unsigned int WinScene_data[] =
 {
 };
 
-
 void WinScene::Initialize() {
     state.nextScene = -1; // -1 means to not change scenes
     

@@ -12,12 +12,15 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "ShaderProgram.h"
 #include "Map.h"
+#include <SDL_mixer.h>
 
 enum EntityType {PLAYER, PLATFORM, ENEMY, KEY, FOOD, IGNORE};
 enum AIState {IDLE, MOVING};
 enum AIType {PATROLLER}; // type of AI -> behavior/style
 class Entity {
 public:
+    Mix_Chunk *keySound = Mix_LoadWAV("Assets/Sounds/key_collecting_noise.wav");
+    Mix_Chunk *lostLife = Mix_LoadWAV("Assets/Sounds/lose_life.wav");
     EntityType entityType;
     AIType aiType;
     AIState aiState;

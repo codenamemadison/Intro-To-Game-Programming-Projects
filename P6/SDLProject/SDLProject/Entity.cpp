@@ -23,8 +23,13 @@ bool Entity::CheckCollision(Entity *other) {
         lastCollision = other->entityType;
         if (this->entityType == PLAYER && other->entityType == ENEMY) { // if player is touched by enemy, you lose a life
             this->isActive = false;
+            Mix_PlayChannel(-1, lostLife, 0);
+            Mix_VolumeMusic(MIX_MAX_VOLUME/32);
         } else if (this->entityType == PLAYER && other->entityType == KEY) { // if player touches key
             other->isActive = false;
+            // key collecting sound effect
+            Mix_PlayChannel(-1, keySound, 0);
+            Mix_VolumeMusic(MIX_MAX_VOLUME/64);
         }
         return true;
     }
@@ -67,12 +72,6 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
        Entity *object = &objects[i];
        if (CheckCollision(object))
        {
-           /*
-           // correcting an error if player is still when horse/skeleton moves past them
-           if (this->entityType == PLAYER && (object->aiType == PATROLLER)) {
-               this->isActive = false;
-           }*/
-           
            float xdist = fabs(position.x - object->position.x);
            float penetrationX = fabs(xdist - (width / 2.0f) - (object->width / 2.0f));
            if (velocity.x > 0) {

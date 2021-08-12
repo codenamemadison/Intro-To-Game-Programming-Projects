@@ -46,7 +46,6 @@ int levelNum = 0;
 GLuint fontTextureID;
 
 Mix_Music *music;
-Mix_Chunk *jump;
 
 void Initialize() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -63,14 +62,11 @@ void Initialize() {
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
     
     // initializing music
-    /*
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
-    music = Mix_LoadMUS("Assets/Sounds/music.mp3");
+    music = Mix_LoadMUS("Assets/Sounds/beginning_music.mp3");
     Mix_PlayMusic(music, -1); // -1 = endless loop
     Mix_VolumeMusic(MIX_MAX_VOLUME / 4);
-     
-    jump = Mix_LoadWAV("Assets/Sounds/jump_sound_effect.wav");
-    */
+    
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
@@ -95,7 +91,7 @@ void Initialize() {
     sceneList[5] = new WinScene();
     sceneList[6] = new LoseScene();
     // will set current scene to Main Menu
-    SwitchToScene(sceneList[1]);
+    SwitchToScene(sceneList[0]);
 }
 
 void ProcessInput() {
@@ -127,12 +123,6 @@ void ProcessInput() {
                         break;
                         
                     case SDLK_SPACE:
-                                /*
-                                Mix_PlayChannel(-1, jump, 0);
-                                //Mix_VolumeMusic(MIX_MAX_VOLUME/32);
-                                currentScene->state.player->jump = true;
-                                 */
-
                         break;
                     case SDLK_RETURN:
                         if (currentScene == sceneList[0]) {
@@ -253,7 +243,6 @@ void Render() {
             Util::DrawText(&program, fontTextureID, "Inventory: ",
                      0.3f, 0, glm::vec3(currentScene->state.player->position.x - 4.5, -35.0 - 2.45, 0));
         } else {
-         
             Util::DrawText(&program, fontTextureID, "Level " + std::to_string(levelNum),
                      0.2f, 0, glm::vec3(currentScene->state.player->position.x - 4.5, currentScene->state.player->position.y + 3.2 + 0.03, 0));
             
