@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A952DB826C1C42700B56E0C /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A952DB726C1C42300B56E0C /* Assets */; };
 		7A952DBC26C4B4FE00B56E0C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A952DB926C4B4F300B56E0C /* SDL2.framework */; };
 		7A952DBD26C4B4FE00B56E0C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A952DBA26C4B4F900B56E0C /* SDL2_image.framework */; };
 		7A952DBE26C4B4FE00B56E0C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A952DBB26C4B4FD00B56E0C /* SDL2_mixer.framework */; };
+		7A952DC226C4CF8300B56E0C /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A952DC126C4CF7C00B56E0C /* Assets */; };
 		7A953B8B26C111AB00B1F801 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A953B8926C111AB00B1F801 /* Entity.cpp */; };
 		7A953B8E26C111C400B1F801 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A953B8C26C111C400B1F801 /* Map.cpp */; };
 		7A953B9126C111E400B1F801 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A953B8F26C111E400B1F801 /* Util.cpp */; };
@@ -37,17 +37,17 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
-				7A952DB826C1C42700B56E0C /* Assets in CopyFiles */,
+				7A952DC226C4CF8300B56E0C /* Assets in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7A952DB726C1C42300B56E0C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../../../../Desktop/Assets; sourceTree = "<group>"; };
 		7A952DB926C4B4F300B56E0C /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		7A952DBA26C4B4F900B56E0C /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
 		7A952DBB26C4B4FD00B56E0C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_mixer.framework; sourceTree = "<group>"; };
+		7A952DC126C4CF7C00B56E0C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		7A953B8926C111AB00B1F801 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		7A953B8A26C111AB00B1F801 /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		7A953B8C26C111C400B1F801 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
-				7A952DB726C1C42300B56E0C /* Assets */,
+				7A952DC126C4CF7C00B56E0C /* Assets */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
 				DBDF1B5C2323DE8D007CECB1 /* shaders */,

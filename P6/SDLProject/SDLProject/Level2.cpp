@@ -64,7 +64,6 @@ void Level2::Initialize() {
     state.player->entityType = PLAYER;
     state.player->position = glm::vec3(2.9, -2.0, 0);
     state.player->movement = glm::vec3(0);
-    //state.player->acceleration = glm::vec3(0, -9.81f, 0);
     state.player->speed = 3.0f;
     state.player->textureID = Util::LoadTexture("Assets/player_spritesheet_more.png");
     
