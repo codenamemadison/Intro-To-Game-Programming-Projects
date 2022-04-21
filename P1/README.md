@@ -16,7 +16,8 @@ PREVIEW:
 
 ## Technologies
 * XCode
-* Languages: C++ and C
+* Languages: C++ and C 
+* Libraries Mainly Used: [SDL (Simple DirectMedia Layer)](https://www.libsdl.org/) (C) and [OpenGL](https://www.opengl.org/) (C)
 
 ## How to Launch
 Download the repo and open in XCode.
