@@ -1,7 +1,7 @@
 # Project #1 - Simple 2D Scene
 
 ## Project Aim
-A simple moving 2D Scene of Sonic rotating through gold coins. Experimenting with motion.
+A simple moving 2D Scene of Sonic rotating through gold coins. Experimenting with motion. [Original prompt can be found here.](https://github.com/carmineguida/CS3113/blob/master/Projects/Project%201%20-%20Simple%202D%20Scene.pdf)
 
 PREVIEW:
 
