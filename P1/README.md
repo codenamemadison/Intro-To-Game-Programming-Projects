@@ -2,7 +2,6 @@
 
 ## Table of Contents
 - [Project Aim](#Project-Aim)
-- [How to Play](#How-to-Play)
 - [Technologies](#Technologies)
 - [How to Launch](#How-to-Launch)
 - [Other Important Notes](#Other-Important-Notes)
@@ -14,13 +13,6 @@ PREVIEW:
 
 ![ezgif-5-e3508f11e9](https://user-images.githubusercontent.com/42008799/164491483-3bcaaf05-c267-41cf-9ebf-994c327933be.gif)
 
-## How to Play
-
-Use the space bar to start moving the ball. 
-Player One (left side) uses W and S keys to move the paddle up and down.
-Player Two (right side) uses the Up and Down keys to move the paddle like so.
-
-Once someone fails to hit the ball back and the ball collides into the wall, the ball stops and the game is over!
 
 ## Technologies
 * XCode
