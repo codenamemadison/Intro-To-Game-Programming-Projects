@@ -33,4 +33,4 @@ Then press the build button and it should get started successfully!
 
 
 ## Other Important Notes
-All assets were free to use.
+All assets were free to use or provided by the course.
