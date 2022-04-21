@@ -6,4 +6,4 @@ In this class, we learned how to create simple 2D games in C++ utilizing SDL and
 * [Project #3 - Lunar Lander](https://github.com/codenamemadison/Intro-To-Game-Programming-Projects/tree/main/P3)
 * [Project #4 - Rise of the AI](https://github.com/codenamemadison/Intro-To-Game-Programming-Projects/tree/main/P4)
 * [Project #5 - Platformer](https://github.com/codenamemadison/Intro-To-Game-Programming-Projects/tree/main/P5)
-* [Final Project - Student's Choice](https://github.com/codenamemadison/Intro-To-Game-Programming-Projects/tree/main/P6)
+* [Final Project - Student's Choice - Top Down 2D Game](https://github.com/codenamemadison/Intro-To-Game-Programming-Projects/tree/main/P6)
